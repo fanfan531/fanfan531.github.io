@@ -169,18 +169,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><ol>
-<li><p>现在有个需求是进行大批量文件copy,写完脚本,运行一下,发现速度实在太慢.</p>
-</li>
-<li><p>要优化只能加多线程,为了图方便,我第一时间想到的是tomorrow这个库.设置线程运行后,发现效率有所提升,但是感觉还是比较慢,最后使用pyton标准库concurrent.futures比较了一下.发现concurrent快好多.</p>
-</li>
-<li><p>话不多说,上代码.</p>
-<h3 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">def test_path():</span><br><span class="line">    pool &#x3D; Pool(max_workers&#x3D;5) &#x2F;&#x2F; 设置线程池</span><br><span class="line">    src &#x3D; r&#39;I:\wbdata\TA&#39;</span><br><span class="line">    dst &#x3D; r&#39;C:\Users\axzq\Desktop\新建文件夹\ta&#39;</span><br><span class="line">    for path in os.listdir(src):</span><br><span class="line">        if not os.path.isdir(src+&#39;\\&#39;+path):</span><br><span class="line">            print(f&#39;&#123;path&#125;不是目录&#39;)</span><br><span class="line">            continue</span><br><span class="line">        Keyword &#x3D; &#39;申请表&#39;</span><br><span class="line">        if Keyword in str(os.listdir(src+&#39;\\&#39;+path)):</span><br><span class="line">            new_src &#x3D; src + &#39;\\&#39; + path + &#39;\\&#39; + Keyword</span><br><span class="line">            if not os.path.exists(new_src):</span><br><span class="line">                print(f&#39;文件 or  目录不存在&#39;)</span><br><span class="line">                continue</span><br><span class="line">            for file in os.listdir(new_src):</span><br><span class="line">                print(f&#39;&#123;new_src&#125;\\&#123;file&#125; ----&gt; &#123;dst&#125;&#39;)</span><br><span class="line">                pool.map(copy1, (f&#39;&#123;new_src&#125;\\&#123;file&#125;&#39;, dst)) &#x2F;&#x2F;执行线程</span><br><span class="line">    print(&#39;复制完成&#39;)</span><br><span class="line">    </span><br><span class="line">@threads(5) &#x2F;&#x2F;使用tomorrow</span><br><span class="line">def copy1(src, dst):</span><br><span class="line">    try:</span><br><span class="line">        shutil.copy(f&#39;&#123;src&#125;&#39;, dst)</span><br><span class="line">    except PermissionError:</span><br><span class="line">        print(f&#39;&#123;src&#125; 无权限...&#39;)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">concurrent运行时间: 10.266663789749146</span><br><span class="line">tomorrow运行时间: 18.670756340026855</span><br></pre></td></tr></table></figure>
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>1.公司电脑,配置有点渣,<br>2.tomorrow是封装的concurrent,讲道理性能不应该差这么多,我个人感觉是因为使用装饰器的原因.在一个是没封装好.<br>3.Python装饰器本质是一个函数,通过闭包实现(应用外部变量的内部函数).<br>4.具体原因我也不知道,希望有懂得的同学,能指点一下原因.谢谢了.</p>
-
+<li>现在有个需求是进行大批量文件copy,写完脚本,运行一下,发现速度实在太慢.</li>
+<li>要优化只能加多线程,为了图方便,我第一时间想到的是tomorrow这个库.设置线程运行后,发现效率有所提升,但是感觉还是比较慢,最后使用pyton标准库concurrent.futures比较了一下.发现concurrent快好多.</li>
+<li>话不多说,上代码.
+        
+          <a class="article-more-a" href="/2020/05/27/tomorrow-%E4%B8%8E-concurrent-futures-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%AF%94%E8%BE%83/#more">more >></a>
+        
       
 
       
