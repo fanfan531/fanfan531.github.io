@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>ken的小天地</title>
+  <title>email 邮箱发送邮件 | ken的小天地</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="ken的小天地">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="简介1.邮件是通过 SMTP传输的.邮件传输协议;库123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657说明:需要连接 SMTP服务器.下面代码的前提是电脑能正确的运行 SMTP客户端import smtplibimport randomfr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="email 邮箱发送邮件">
+<meta property="og:url" content="http://yoursite.com/2020/06/04/email-sen/index.html">
 <meta property="og:site_name" content="ken的小天地">
+<meta property="og:description" content="简介1.邮件是通过 SMTP传输的.邮件传输协议;库123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657说明:需要连接 SMTP服务器.下面代码的前提是电脑能正确的运行 SMTP客户端import smtplibimport randomfr">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-04T02:08:28.000Z">
+<meta property="article:modified_time" content="2020-06-04T02:32:08.105Z">
 <meta property="article:author" content="ken">
 <meta name="twitter:card" content="summary">
   
@@ -146,80 +150,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-email-poplib" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-email-sen" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/04/email-poplib/">email 邮箱接收,带附件,中文解码!</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/04/email-poplib/" class="archive-article-date">
-  	<time datetime="2020-06-04T02:09:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>1.Python邮件解码真的是很痛苦的事情.<br>2.搞了很久,记录一下,接收邮件编码问题.</p>
-<h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><span class="line">class EmailReceive:</span><br><span class="line"></span><br><span class="line">    def loging_email(self):</span><br><span class="line">        &#39;&#39;&#39;</span><br><span class="line">        邮箱登录</span><br><span class="line">        &#39;&#39;&#39;</span><br><span class="line">        host &#x3D; &#39;&#39;</span><br><span class="line">        user &#x3D; &#39;&#39;</span><br><span class="line">        pass_ &#x3D; &#39;&#39;</span><br><span class="line">        print(f&#39;邮箱地址:&#123;host&#125;, user:&#123;user&#125;, pass_&#x3D;&#123;pass_&#125;&#39;)</span><br><span class="line">        try:</span><br><span class="line">            server &#x3D; poplib.POP3_SSL(host)  # 连接到POP3服务器，带SSL的:</span><br><span class="line">            # server &#x3D; poplib.POP3(host)</span><br><span class="line">            server.user(user)</span><br><span class="line">            server.pass_(pass_)</span><br><span class="line">            return server</span><br><span class="line">        except BaseException as e:</span><br><span class="line">            print(f&#39;邮件登录报错 &#123;e&#125;&#39;)</span><br><span class="line">            raise Exception(&#39;连接邮箱报错&#39;)</span><br><span class="line"></span><br><span class="line">    def decode_str(self, s):</span><br><span class="line">        value, charset &#x3D; decode_header(s)[0]</span><br><span class="line">        if charset:</span><br><span class="line">            if charset &#x3D;&#x3D; &#39;gb2312&#39;:</span><br><span class="line">                charset &#x3D; &#39;gb18030&#39;</span><br><span class="line">            value &#x3D; value.decode(charset)</span><br><span class="line">        return value</span><br><span class="line"></span><br><span class="line">    def get_email_headers(self, msg):</span><br><span class="line">        &#39;&#39;&#39;头部信息解析函数&#39;&#39;&#39;</span><br><span class="line">        headers &#x3D; &#123;&#125;</span><br><span class="line">        for header in [&#39;From&#39;, &#39;Subject&#39;, &#39;Date&#39;]:</span><br><span class="line">            value &#x3D; msg.get(header, &#39;&#39;)</span><br><span class="line">            if value:</span><br><span class="line">                if header &#x3D;&#x3D; &#39;Date&#39;:</span><br><span class="line">                    headers[&#39;Date&#39;] &#x3D; value</span><br><span class="line">                if header &#x3D;&#x3D; &#39;Subject&#39;:</span><br><span class="line">                    subject &#x3D; self.decode_str(value)</span><br><span class="line">                    headers[&#39;Subject&#39;] &#x3D; subject</span><br><span class="line">                if header &#x3D;&#x3D; &#39;From&#39;:</span><br><span class="line">                    hdr, addr &#x3D; parseaddr(value)</span><br><span class="line">                    name &#x3D; decode_str(hdr)</span><br><span class="line">                    from_addr &#x3D; u&#39;%s &lt;%s&gt;&#39; % (name, addr)</span><br><span class="line">                    headers[&#39;From&#39;] &#x3D; from_addr</span><br><span class="line">        return headers</span><br><span class="line"></span><br><span class="line">    def decode_e_mail(self, data):</span><br><span class="line">        &#39;&#39;&#39;解析转码邮件内容&#39;&#39;&#39;</span><br><span class="line">        try:</span><br><span class="line">            return data.decode(&#39;utf-8&#39;)</span><br><span class="line">        except:</span><br><span class="line">            try:</span><br><span class="line">                return data.decode(&#39;gbk&#39;)</span><br><span class="line">            except Exception as e:</span><br><span class="line">                try:</span><br><span class="line">                    return data.decode(&#39;gb18030&#39;, &#39;ignore&#39;)</span><br><span class="line">                except:</span><br><span class="line">                    print(chardet.detect(data))</span><br><span class="line">                    print(f&#39;解析转码错误类型是 &#123;e.__class__.__name__&#125;&#39;)</span><br><span class="line">                    print(f&#39;解析转码错误明细是 &#123;e&#125;&#39;)</span><br><span class="line">                    print(e.__traceback__.tb_lineno)</span><br><span class="line">        return None</span><br><span class="line"></span><br><span class="line">    def get_email_content(self, message, savepath):  # 下载附件函数</span><br><span class="line">        &#39;&#39;&#39;邮件附件下载&#39;&#39;&#39;</span><br><span class="line">        file_name_list &#x3D; []</span><br><span class="line">        for part in message.walk():</span><br><span class="line">            download_filename &#x3D; part.get_filename()</span><br><span class="line">            if download_filename:</span><br><span class="line">                download_filename &#x3D; decode_str(download_filename)</span><br><span class="line">                print(f&#39;附件名称:&#123;download_filename&#125;&#39;, savepath)</span><br><span class="line">                data &#x3D; part.get_payload(decode&#x3D;True)</span><br><span class="line">                abs_filename &#x3D; os.path.join(savepath, download_filename)</span><br><span class="line">                try:</span><br><span class="line">                    print(f&#39;邮件附件解压地址: &#123;abs_filename&#125;&#39;)</span><br><span class="line">                    attach &#x3D; open(abs_filename, &#39;wb&#39;)</span><br><span class="line">                    attach.write(data)</span><br><span class="line">                    attach.close()</span><br><span class="line">                    file_name_list.append(download_filename)</span><br><span class="line">                except BaseException as e:</span><br><span class="line">                    print(f&#39;附件下载错误 &#123;abs_filename&#125;&#39;)</span><br><span class="line">                    print(e)</span><br><span class="line">        return str(file_name_list)</span><br><span class="line"></span><br><span class="line">    def guess_charset(self, msg):</span><br><span class="line">        charset &#x3D; msg.get_charset()</span><br><span class="line">        if charset is None:</span><br><span class="line">            content_type &#x3D; msg.get(&#39;Content-Type&#39;, &#39;&#39;).lower()</span><br><span class="line">            pos &#x3D; content_type.find(&#39;charset&#x3D;&#39;)</span><br><span class="line">            if pos &gt;&#x3D; 0:</span><br><span class="line">                charset &#x3D; content_type[pos + 8:].strip()</span><br><span class="line">        return charset</span><br><span class="line"></span><br><span class="line">    def get_mail_content(self, msg):</span><br><span class="line">        &#39;&#39;&#39;邮件正文解码&#39;&#39;&#39;</span><br><span class="line">        if msg &#x3D;&#x3D; None:</span><br><span class="line">            return None</span><br><span class="line">        for part in msg.walk():</span><br><span class="line">            content_type &#x3D; part.get_content_type()</span><br><span class="line">            charset &#x3D; guess_charset(part)</span><br><span class="line">            # 如果有附件，则直接跳过</span><br><span class="line">            if part.get_filename() !&#x3D; None: continue</span><br><span class="line">            email_content_type &#x3D; &#39;&#39;</span><br><span class="line">            content &#x3D; &#39;&#39;</span><br><span class="line">            if content_type &#x3D;&#x3D; &#39;text&#x2F;plain&#39;:</span><br><span class="line">                email_content_type &#x3D; &#39;text&#39;</span><br><span class="line">            elif content_type &#x3D;&#x3D; &#39;text&#x2F;html&#39;:</span><br><span class="line">                # print(&#39;html 格式 跳过&#39;)</span><br><span class="line">                email_content_type &#x3D; &#39;html&#39;</span><br><span class="line">                # continue  # 不要html格式的邮件</span><br><span class="line">            if charset:</span><br><span class="line">                try:</span><br><span class="line">                    content &#x3D; part.get_payload(decode&#x3D;True).decode(charset)</span><br><span class="line">                # 这里遇到了几种由广告等不满足需求的邮件遇到的错误，直接跳过了</span><br><span class="line">                except AttributeError:</span><br><span class="line">                    print(&#39;type error&#39;)</span><br><span class="line">                except LookupError:</span><br><span class="line">                    print(&quot;unknown encoding: utf-8&quot;)</span><br><span class="line">            if email_content_type &#x3D;&#x3D; &#39;&#39;:</span><br><span class="line">                continue</span><br><span class="line">                # 如果内容为空，也跳过</span><br><span class="line">            print(email_content_type + &#39; -----&gt;  &#39; + content)</span><br><span class="line"></span><br><span class="line">    def run(self):</span><br><span class="line">        # 确定邮件遍历起始点</span><br><span class="line">        server &#x3D; loging_email()</span><br><span class="line">        msg_count, msg_size &#x3D; server.stat()  # stat()返回邮件数量和占用空间:</span><br><span class="line">        print(f&#39;邮件数量:&#123;msg_count&#125;, 占用空间:&#123;msg_size&#125;&#39;)</span><br><span class="line"></span><br><span class="line">        for i in range(int(msg_count) - 10, int(msg_count) + 1):  # 遍历邮件索引</span><br><span class="line">            resp, byte_lines, octets &#x3D; server.retr(i)</span><br><span class="line">            # 拼接邮件内容</span><br><span class="line">            msg_content &#x3D; b&#39;\r\n&#39;.join(byte_lines).decode(&#39;utf-8&#39;, &#39;ignore&#39;)</span><br><span class="line">            # 把邮件内容解析为Message对象</span><br><span class="line">            msg &#x3D; Parser().parsestr(msg_content)</span><br><span class="line">            # 解码邮件正文</span><br><span class="line">            content &#x3D; self.get_mail_content(msg)</span><br><span class="line">            if content: print(content)</span><br><span class="line">            # 解码头部信息</span><br><span class="line">            headers &#x3D; self.get_email_headers(msg)</span><br><span class="line">            print(f&#39;第 &#123;i&#125; 封邮件,邮件头部信息:&#123;headers&#125;&#39;)</span><br><span class="line">            # 下载邮件附件</span><br><span class="line">            self.get_email_content(msg, r&#39;C:\Users\axzq\Desktop\新建文件夹\qwer&#39;)</span><br><span class="line">        server.quit()</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/04/email-poplib/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-email-sen" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/04/email-sen/">email 邮箱发送邮件</a>
+    <h1 class="article-title" itemprop="name">
+      email 邮箱发送邮件
     </h1>
   
 
@@ -236,6 +174,27 @@
       
 
       
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
     <div class="article-info article-info-index">
       
@@ -243,16 +202,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/04/email-sen/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/04/email-sen/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/06/04/email-poplib/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          email 邮箱接收,带附件,中文解码!
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/05/27/windows-cmd%E8%87%AA%E5%8A%A8%E4%BC%A0%E5%8F%82%EF%BC%8C%E5%85%8D%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">windows cmd自动传参，免配置文件</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -272,204 +299,14 @@
 
 
 
-
   
-    <article id="post-windows-cmd自动传参，免配置文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/27/windows-cmd%E8%87%AA%E5%8A%A8%E4%BC%A0%E5%8F%82%EF%BC%8C%E5%85%8D%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">windows cmd自动传参，免配置文件</a>
-    </h1>
   
 
-        
-        <a href="/2020/05/27/windows-cmd%E8%87%AA%E5%8A%A8%E4%BC%A0%E5%8F%82%EF%BC%8C%E5%85%8D%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" class="archive-article-date">
-  	<time datetime="2020-05-27T09:28:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>执行命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo [命令行] | cmd命令</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/27/windows-cmd%E8%87%AA%E5%8A%A8%E4%BC%A0%E5%8F%82%EF%BC%8C%E5%85%8D%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-tomorrow-与-concurrent-futures-多线程比较" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/27/tomorrow-%E4%B8%8E-concurrent-futures-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%AF%94%E8%BE%83/">tomorrow 与 concurrent.futures 多线程比较</a>
-    </h1>
   
 
-        
-        <a href="/2020/05/27/tomorrow-%E4%B8%8E-concurrent-futures-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%AF%94%E8%BE%83/" class="archive-article-date">
-  	<time datetime="2020-05-27T03:19:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><ol>
-<li>现在有个需求是进行大批量文件copy,写完脚本,运行一下,发现速度实在太慢.</li>
-<li>要优化只能加多线程,为了图方便,我第一时间想到的是tomorrow这个库.设置线程运行后,发现效率有所提升,但是感觉还是比较慢,最后使用pyton标准库concurrent.futures比较了一下.发现concurrent快好多.</li>
-<li>话不多说,上代码.
-        
-          <a class="article-more-a" href="/2020/05/27/tomorrow-%E4%B8%8E-concurrent-futures-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%AF%94%E8%BE%83/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/27/tomorrow-%E4%B8%8E-concurrent-futures-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%AF%94%E8%BE%83/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-my-first" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/26/my-first/">my-first</a>
-    </h1>
   
 
-        
-        <a href="/2020/05/26/my-first/" class="archive-article-date">
-  	<time datetime="2020-05-26T02:43:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="文档读取"><a href="#文档读取" class="headerlink" title="文档读取"></a>文档读取</h3><p>推荐采用 utf-8格式的编码,可以兼容 ASCII编码</p>
-        
-          <a class="article-more-a" href="/2020/05/26/my-first/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/26/my-first/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
 
 
@@ -492,8 +329,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
