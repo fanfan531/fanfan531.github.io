@@ -169,13 +169,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>维护python2.7的一个小程序,编码问题,真的是搞死人.</p>
-<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UnicodeDecodeError: &#39;gb2312&#39; codec can&#39;t decode bytes</span><br></pre></td></tr></table></figure>
-
-<p>1.这个错误我在在接受邮件时报错的,意思是邮件正文中邮非法的字符串,指定编码无法解码…<br>2.在调试过程中,灵光一闪,如果把非法字符忽略如何,决定深入看下decode()这个方法的源码.居然被我找到解决办法了.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bytes.decode([encoding&#x3D;&quot;utf-8&quot;][,errors&#x3D;&quot;strict&quot;])</span><br><span class="line">添加参数,errors&#x3D;&quot;ignore&quot;,忽略非法字符.</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20200617085718728.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzE4MjY3NTQz,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>完美解决,亲测有效.<br>点个赞再走呗,如果有效.</p>
-
+        
+          <a class="article-more-a" href="/2020/06/17/python-UnicodeDecodeError/#more">more >></a>
+        
       
 
       
